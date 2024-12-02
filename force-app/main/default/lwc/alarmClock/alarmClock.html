@@ -12,7 +12,7 @@
          <c-clock-drop-down label="Minute(s)" options={minutes} unique-id="select-minutes" onoptionhandler={optionhandler}></c-clock-drop-down>
        </div>
        <div class="slds-col">
-         <c-clock-drop-down label="PM" options={meridiems} unique-id="select-meridiems" onoptionhandler={optionhandler}></c-clock-drop-down>
+         <c-clock-drop-down label="AM/PM" options={meridiems} unique-id="select-meridiems" onoptionhandler={optionhandler}></c-clock-drop-down>
        </div>
      </div>
      <template if:false={isAlarmSet}>

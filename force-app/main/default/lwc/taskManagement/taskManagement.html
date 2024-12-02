@@ -1,0 +1,38 @@
+<template>
+    <lightning-card title="My Tasks" icon-name="standard:task">
+        <lightning-button variant="brand" label="New Task" onclick={handleNewTask}></lightning-button>
+        <template if:true={tasks}>
+            <lightning-datatable
+                key-field="id"
+                data={tasks}
+                columns={columns}
+                onrowaction={handleRowAction}>
+            </lightning-datatable>
+        </template>
+        <template if:true={isModalOpen}>
+            <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <div class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                            <lightning-icon icon-name="utility:close" alternative-text="close" size="small"></lightning-icon>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <h2 class="slds-text-heading_medium"></h2>
+                    </div>
+                    <div class="slds-modal__content slds-p-around_medium">
+                        <lightning-input label="Subject" value={task.Subject} onchange={handleInputChange} data-field="Subject"></lightning-input>
+                        <lightning-input label="Status" value={task.Status} onchange={handleInputChange} data-field="Status"></lightning-input>
+                        <lightning-input label="Priority" value={task.Priority} onchange={handleInputChange} data-field="Priority"></lightning-input>
+                        <lightning-input type="date" label="Due Date" value={task.DueDate} onchange={handleInputChange} data-field="DueDate"></lightning-input>
+                    </div>
+                    <div class="slds-modal__footer">
+                        <lightning-button variant="neutral" label="Cancel" onclick={closeModal}></lightning-button>
+                       
+                    </div>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+
+    </lightning-card>
+</template>
